@@ -1,0 +1,477 @@
+@import "../utils/variables.scss";
+
+:root {
+  --light-gray: #{$light-gray};
+  --font-family-nunito: #{$font-family-nunito};
+  --dark-gray: #{$dark-gray};
+  --scrollbar-track-color: #{$scrollbar-track-color};
+  --scrollbar-thumb-color: #{$scrollbar-thumb-color};
+  --scrollbar-thumb-hover-color: #{$scrollbar-thumb-hover-color};
+}
+
+/* Mobile Nav */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes navItemFade {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes logoSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes buttonPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  background: rgba(10, 10, 10, 0.9);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(10, 10, 10, 1);
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: white;
+
+  &:hover .logo-icon {
+    animation: logoSpin 0.5s ease;
+  }
+}
+
+.logo-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: linear-gradient(45deg, #4461f2, #6e4ff2);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+
+  &::after {
+    content: "";
+    width: 1.25rem;
+    height: 1.25rem;
+    background: white;
+    transform: rotate(45deg);
+  }
+}
+
+.nav-links {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+
+    a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+      opacity: 0;
+      animation: navItemFade 0.5s ease forwards;
+
+      &:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      &:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      &:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      &:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+
+      &:hover {
+        color: #4461f2;
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+.contact-btn {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  padding: 10px 35px;
+  border-radius: 20px;
+  color: var(--light-gray);
+  border: 2px solid var(--light-gray);
+  transition: all 0.3s ease;
+  animation: buttonPulse 2s infinite;
+  background-color: transparent;
+
+  &:hover {
+    background-color: var(--light-gray);
+    color: var(--dark-gray) !important;
+    transform: scale(1.05);
+    transform: translateY(-2px);
+    animation: none;
+  }
+}
+
+.header__menu {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: rotate(90deg);
+  }
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--dark-gray);
+  padding: 2rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  z-index: 999;
+
+  &.open {
+    display: flex;
+    animation: fadeIn 0.3s ease-out;
+
+    a {
+      animation: navItemFade 0.5s ease forwards;
+      color: var(--light-gray);
+      text-decoration: none;
+      font-size: 1.25rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+      opacity: 0;
+      transform: translateX(-20px);
+
+      &:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      &:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      &:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      &:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      &:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+
+      &:hover {
+        transition: all 0.3s ease;
+        font-weight: 700;
+        transform: translateX(5px);
+      }
+    }
+  }
+}
+
+.close-menu {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: rotate(90deg);
+  }
+}
+
+.testimonials__svg-fourth {
+  position: absolute;
+  left: -90px;
+  top: -10px;
+  width: 210px;
+  z-index: 1;
+  height: 70px;
+  --color1: #ff6e1a;
+}
+
+.testimonials__svg-fifth {
+  position: absolute;
+  left: 440px;
+  bottom: -20px;
+  width: 210px;
+  height: 70px;
+  --color1: #ec1aff;
+  z-index: 1;
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .hero__svg,
+  .hero__svg2,
+  .hero__svg3,
+  .testimonials__svg-fifth,
+  .testimonials__svg-fourth,
+  .testimonials__svg-third,
+  .testimonials__svg-second,
+  .collaboration__svg-first,
+  .testimonials__svg-first,
+  .collaboration__image--third,
+  .collaboration__svg-first {
+    display: none;
+  }
+
+  .about__buttons {
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin: 30px 0;
+  }
+
+  .footer {
+    padding-top: 70px;
+  }
+
+  .footer .container {
+    padding: 0 25px;
+  }
+
+  .footer__bottom {
+    margin-top: 60px;
+  }
+
+  .collaboration__content {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .collaboration__button {
+    align-self: center;
+  }
+
+  .container {
+    padding: 44px 25px;
+  }
+
+  .header__contact-button {
+    display: none;
+  }
+
+  .services .container {
+    flex-direction: column;
+    padding: 72px 25px;
+  }
+
+  .services__intro {
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .services__intro-readmore {
+    align-self: flex-start;
+  }
+
+  .header__nav {
+    display: none;
+  }
+
+  .header__menu {
+    display: block;
+  }
+
+  .hero__title {
+    font-size: 48px;
+  }
+
+  .about .container {
+    padding: 72px 25px;
+  }
+
+  .about__content {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+  }
+
+  .services .container {
+    flex-direction: column;
+    gap: 70px;
+  }
+
+  .services__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .header .container {
+    padding: 72px 25px;
+  }
+
+  .portfolio__images {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .testimonials__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .collaboration .container {
+    flex-direction: column-reverse;
+    gap: 70px;
+  }
+}
+
+/* Large screens (lg) */
+@media (min-width: 1025px) {
+  .container {
+    padding: 0 40px;
+  }
+
+  .header .container {
+    padding: 72px 0px;
+  }
+
+  .services .container {
+    flex-direction: row;
+    gap: 152px;
+  }
+
+  .services__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .portfolio__images {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .testimonials__list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .collaboration .container {
+    flex-direction: row;
+    gap: 302px;
+  }
+}
+
+@media (max-width: 1329px) {
+  .testimonials__svg-first {
+    display: none;
+  }
+}
+
+@media (max-width: 1389px) {
+  .testimonials__svg-first,
+  .testimonials__svg-third {
+    display: none;
+  }
+
+  .collaboration__svg-first {
+    top: -20%;
+  }
+}
+
+@media (max-width: 1321px) {
+  .collaboration__svg-first {
+    top: -30%;
+  }
+}
+
+@media (max-width: 1280px) {
+  .collaboration__svg-first {
+    top: -30%;
+  }
+}
+
+@media (max-width: 1255px) {
+  .collaboration__svg-first {
+    top: -34%;
+  }
+}
+
+@media (max-width: 1271px) {
+  .hero__svg {
+    display: none;
+  }
+}

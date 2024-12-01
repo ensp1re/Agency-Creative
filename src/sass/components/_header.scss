@@ -1,0 +1,99 @@
+@import "../utils/variables.scss";
+
+
+:root {
+  --light-gray: #{$light-gray};
+  --font-family-nunito: #{$font-family-nunito};
+  --dark-gray: #{$dark-gray};
+  --scrollbar-track-color: #{$scrollbar-track-color};
+  --scrollbar-thumb-color: #{$scrollbar-thumb-color};
+  --scrollbar-thumb-hover-color: #{$scrollbar-thumb-hover-color};
+}
+
+
+
+/* Header */
+.icon-person {
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+}
+
+.header {
+  > .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+
+    &-text {
+      display: flex;
+      flex-direction: column;
+      font-family: "Quicksand", sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 1.2;
+      letter-spacing: 0.01em;
+      color: var(--light-gray);
+      gap: 4px;
+
+      &--secondary {
+        font-weight: 400;
+        font-size: 16px;
+      }
+    }
+  }
+
+  &__nav-list {
+    display: flex;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+    text-transform: capitalize;
+    flex: none;
+    gap: 50px;
+    order: 1;
+    flex-grow: 0;
+  }
+
+  &__nav-item {
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__contact-button {
+    font-family: "Quicksand", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    padding: 10px 35px;
+    border-radius: 20px;
+    color: var(--light-gray);
+    border: 2px solid var(--light-gray);
+    transition: 0.3s;
+    background-color: transparent;
+
+    &:hover {
+      cursor: pointer;
+      background-color: var(--light-gray);
+      color: #000;
+    }
+  }
+}
