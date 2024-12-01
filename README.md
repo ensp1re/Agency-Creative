@@ -63,3 +63,4 @@ The **Agency-Creative** project is built using the following technologies:
 - **HTML**: The standard markup language used to create the structure of the web pages.
 - **CSS**: Used for styling the HTML elements to create an appealing user interface.
 - **Vite**: A fast build tool and development server that provides a modern development experience.
+- **Vercel**: A cloud platform for static sites and Serverless Functions that enables developers to host websites and web applications with ease.
